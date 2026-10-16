@@ -1,1 +1,50 @@
+[build-system]
+requires = [
+    "setuptools>=75",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
 
+
+[project]
+name = "ba-ai-universe-engine"
+version = "8.2.0"
+description = "BA AI Universe Engine - model-native autonomous world simulation and narrative runtime"
+readme = "README.md"
+requires-python = ">=3.10"
+
+authors = [
+    { name = "StarCarp Studio" }
+]
+
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "pydantic>=2.7"
+]
+
+
+[project.scripts]
+ba-ai-engine = "ba_ai_universe_engine.cli:main"
+ba-ai-engine-verify = "ba_ai_universe_engine.cli:verify_main"
+
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+include-package-data = true
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+
+[tool.setuptools.package-data]
+ba_ai_universe_engine = [
+    "data/**/*",
+    "tools/**/*",
+    "**/*.json",
+    "**/*.yaml",
+    "**/*.yml",
+    "**/*.txt",
+    "**/*.md"
+]
